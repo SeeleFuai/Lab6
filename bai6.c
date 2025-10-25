@@ -64,15 +64,19 @@ TNode* deleteBST(TNode* r, int x) {
             return t;
         }
         // Trường hợp 2: không có con phải
-        if (!r->right) {
+        else if (!r->right) {
             TNode* t = r->left;
             free(r);
             return t;
         }
-        // Trường hợp 3: có cả hai con, thế mạng bằng min bên phải
-        TNode* s = findMin(r->right);
-        r->key = s->key;
-        r->right = deleteBST(r->right, s->key); // xóa nút thế mạng
+        else
+        {
+            // Trường hợp 3: có cả hai con, thế mạng bằng min bên phải
+            TNode* s = findMin(r->right);
+            r->key = s->key;
+            r->right = deleteBST(r->right, s->key); // xóa nút thế mạng
+        }
+
     }
     return r;
 }
